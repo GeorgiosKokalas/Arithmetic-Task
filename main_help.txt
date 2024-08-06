@@ -1,0 +1,17 @@
+How to run main:
+----------------
+To run main with the default parameters
+main()          
+
+For help:
+main('help')            
+
+To run main with custom parameters       
+main('par1', 'val1', 'par2', 'val2'...)
+ Types of parameters accepted currently
+ env   The experimental environment of the task instance
+     None (DEFAULT - For generic use)
+     EMU  (For use at the EMU by BCM Neurosurgery)
+ ID    The codename used to refer to the participant
+     Can have any value you give it (DEFAULT - test)
+     Overwritten if the env is set to EMU

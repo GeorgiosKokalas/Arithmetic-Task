@@ -1,4 +1,4 @@
-function [keysPressed,visual_opt] = check_keys(device_opt,varargin)
+function [keysPressed,visual_opt, abort] = check_keys(device_opt,varargin)
 
     % Loop until 'Enter' is pressed
     % varargin for photodiode off
@@ -7,6 +7,7 @@ function [keysPressed,visual_opt] = check_keys(device_opt,varargin)
 
 % init
 exit_key = false;
+abort = false;
 keysPressed.names = [];
 keysPressed.times = [];
 id_first_touch = true;
@@ -32,6 +33,12 @@ while ~exit_key
                 any(keyCode(device_opt.confirm2)) || ... % space
                 keyCode(device_opt.abort) % strcmp(keyName, device_opt.abort)
             exit_key = true;
+
+            if keyCode(device_opt.abort)
+                abort = true; 
+                keysPressed.times = [keysPressed.times, secs];
+                keysPressed.names = [keysPressed.names, {device_opt.abort}];
+            end
             break; % now not saving 'return'
         end
         
@@ -155,3 +162,8 @@ if ~isempty(regexp(keyName,'-','ONCE'))
 %     end
 end
 end
+
+%% changelog
+% Kokalas @ 2024/8/6
+%   - Added new Output: abort (check if the abort key was pressed in specific)    
+%   - Stored the pressing of the escape Key
