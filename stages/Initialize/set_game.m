@@ -12,7 +12,7 @@ function game_opt = set_game(visual_opt)
     
     t_resolution = 1/1000;
 
-    sess_trs = 360; % assuming 30min / (5sec/trial) = 360 trials
+    sess_trs = 3; % assuming 30min / (5sec/trial) = 360 trials
     
     %% 2. Task specific
     % operation
